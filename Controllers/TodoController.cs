@@ -91,7 +91,7 @@ namespace ToDoApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Date")] TodoModel todoModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Date,Finished")] TodoModel todoModel)
         {
             if (id != todoModel.Id)
             {

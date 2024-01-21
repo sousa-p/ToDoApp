@@ -11,7 +11,7 @@ using ToDoApp.Data;
 namespace ToDoApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240120190825_TodoModel")]
+    [Migration("20240121184040_TodoModel")]
     partial class TodoModel
     {
         /// <inheritdoc />
@@ -228,6 +228,9 @@ namespace ToDoApp.Data.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("Finished")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

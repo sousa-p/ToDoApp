@@ -5,7 +5,7 @@
 }
 
 <p>
-    <a asp-action="Create">New ToDo</a>
+    <a asp-action="Create"><img src="images/plus-square.svg" class="img-fluid" alt="New ToDo"></a>
 </p>
 <table class="table">
     <thead>
@@ -15,6 +15,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finished)
             </th>
             <th></th>
         </tr>
@@ -29,8 +32,10 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Finished)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>

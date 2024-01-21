@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cP17tOdnCJgtGYX+K08F2W0/A7Vlh9gQ6GBsHudrwW4=",
+  "Hash": "z4q0KmvXLXyRRNylTJv64ImeYenMaXd+U0HxQu4ertk=",
   "Source": "ToDoApp",
   "BasePath": "_content/ToDoApp",
   "Mode": "Default",
@@ -1231,6 +1231,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/images/plus-square.svg",
+      "SourceId": "ToDoApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/",
+      "BasePath": "_content/ToDoApp",
+      "RelativePath": "images/plus-square.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/plus-square.svg"
     },
     {
       "Identity": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/js/site.js",
