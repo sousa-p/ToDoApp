@@ -24,11 +24,14 @@ namespace ToDoApp.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TodoModel.ToListAsync());
+            return View(
+                await _context.TodoModel
+                    .Where(t => t.User == User.Identity.Name)
+                    .ToListAsync());
         }
-        
-        [Authorize]
+
         // GET: Todo/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -54,13 +57,14 @@ namespace ToDoApp.Controllers
         }
 
         // POST: Todo/Create
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<IActionResult> Create([Bind("Id,Description,Date")] TodoModel todoModel)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,DateToDone,User")] TodoModel todoModel)
         {
             if (ModelState.IsValid)
             {
+                todoModel.User = User.Identity.Name;
                 _context.Add(todoModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -86,12 +90,10 @@ namespace ToDoApp.Controllers
         }
 
         // POST: Todo/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,Date,Finished")] TodoModel todoModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,DateToDone")] TodoModel todoModel)
         {
             if (id != todoModel.Id)
             {
@@ -102,7 +104,12 @@ namespace ToDoApp.Controllers
             {
                 try
                 {
-                    _context.Update(todoModel);
+                    var existingTodo = await _context.TodoModel.FindAsync(todoModel.Id);
+                    existingTodo.Title = todoModel.Title;
+                    existingTodo.Description = todoModel.Description;
+                    existingTodo.DateToDone = todoModel.DateToDone;
+
+                    _context.Update(existingTodo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -141,9 +148,9 @@ namespace ToDoApp.Controllers
         }
 
         // POST: Todo/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var todoModel = await _context.TodoModel.FindAsync(id);

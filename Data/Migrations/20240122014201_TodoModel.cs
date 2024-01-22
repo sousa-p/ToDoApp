@@ -10,20 +10,13 @@ namespace ToDoApp.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "Finished",
-                table: "TodoModel",
-                type: "INTEGER",
-                nullable: false,
-                defaultValue: false);
+
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Finished",
-                table: "TodoModel");
+
         }
     }
 }

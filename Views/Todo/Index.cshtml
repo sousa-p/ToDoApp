@@ -4,41 +4,57 @@
     ViewData["Title"] = "Index";
 }
 
-<p>
-    <a asp-action="Create"><img src="images/plus-square.svg" class="img-fluid" alt="New ToDo"></a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Finished)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+@if (Model.Any()) {
+    <div class="w-100 mt-5 d-flex justify-content-end">
+        <a asp-action="Create"><img src="images/plus-square.svg" class="img-fluid" alt="New ToDo"></a>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateToDone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Done)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
         @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Finished)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateToDone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Done)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><img class="me-3" src="images/pencil-square.svg" /></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><img  class="ms-3" src="images/x-circle.svg" /></a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+}
+else {
+    <div class="row mt-5">
+        <h1 class="text-center">You don't have any ToDo!</h1>
+        <a asp-action="Create"><h2 class="text-center">Create One</h2></a>
+    </div>
+}

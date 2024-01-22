@@ -5,34 +5,41 @@
 }
 
 <div>
-    <h4>Delete</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Finished)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Finished)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" />
-    </form>
+    <a asp-action="Index"><img src="../../images/arrow-return-left.svg" class="img-fluid" alt="Back To List"></a>
 </div>
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="row d-flex justify-content-center">
+    <div class="col-md-5">
+        <h1 class="text-center">Delete</h1>
+        <dl class="row d-flex justify-content-center">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DateToDone)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.DateToDone)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Done)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Done)
+            </dd>
+        </dl>
+        
+        <form asp-action="Delete" class="d-flex justify-content-center">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="pt-2 pb-2 ps-5 pe-5 btn btn-danger" />
+        </form>
+    </div>
 </div>

@@ -4,38 +4,40 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-<hr />
-<div class="row">
+<div>
+    <a asp-action="Index"><img src="../../images/arrow-return-left.svg" class="img-fluid" alt="Back To List"></a>
+</div>
+<div class="row d-flex justify-content-center">
     <div class="col-md-4">
+        <h1 class="text-center">Edit</h1>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+            <div class="form-group mt-3">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                    <input asp-for="Finished" class="custom-control-input" type="checkbox" />
-                    <label asp-for="Finished" class="custom-control-label"></label>
-                </div>
-                <span asp-validation-for="Finished" class="text-danger"></span>
-            </div>
-
             <div class="form-group mt-3">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="DateToDone" class="control-label"></label>
+                <input asp-for="DateToDone" class="form-control" />
+                <span asp-validation-for="DateToDone" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3 form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Done" /> @Html.DisplayNameFor(model => model.Done)
+                </label>
+            </div>
+            <div class="form-group mt-3 d-flex justify-content-center">
+                <input type="submit" value="Save" class="pt-2 pb-2 ps-5 pe-5 btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div class="mt-3">
-    <a asp-action="Index">Back to List</a>
-</div>
+

@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/images/arrow-return-left.svg",
+      "PackagePath": "staticwebassets/images/arrow-return-left.svg"
+    },
+    {
       "Id": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/images/plus-square.svg",
       "PackagePath": "staticwebassets/images/plus-square.svg"
     },
