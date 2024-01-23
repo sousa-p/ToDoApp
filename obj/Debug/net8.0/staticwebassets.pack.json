@@ -17,8 +17,16 @@
       "PackagePath": "staticwebassets/images/arrow-return-left.svg"
     },
     {
+      "Id": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/images/pencil-square.svg",
+      "PackagePath": "staticwebassets/images/pencil-square.svg"
+    },
+    {
       "Id": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/images/plus-square.svg",
       "PackagePath": "staticwebassets/images/plus-square.svg"
+    },
+    {
+      "Id": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/images/x-circle.svg",
+      "PackagePath": "staticwebassets/images/x-circle.svg"
     },
     {
       "Id": "/home/sousa/Documents/Projetos/ToDoApp/wwwroot/js/site.js",

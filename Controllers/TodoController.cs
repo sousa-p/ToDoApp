@@ -41,7 +41,9 @@ namespace ToDoApp.Controllers
 
             var todoModel = await _context.TodoModel
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (todoModel == null)
+            bool userValidation = User.Identity != null && User.Identity.IsAuthenticated && todoModel.User == User.Identity.Name;
+            
+            if (todoModel == null || !userValidation)
             {
                 return NotFound();
             }
@@ -93,7 +95,7 @@ namespace ToDoApp.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,DateToDone")] TodoModel todoModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,DateToDone,Done")] TodoModel todoModel)
         {
             if (id != todoModel.Id)
             {
@@ -105,12 +107,17 @@ namespace ToDoApp.Controllers
                 try
                 {
                     var existingTodo = await _context.TodoModel.FindAsync(todoModel.Id);
-                    existingTodo.Title = todoModel.Title;
-                    existingTodo.Description = todoModel.Description;
-                    existingTodo.DateToDone = todoModel.DateToDone;
+                    bool userValidation = User.Identity != null && User.Identity.IsAuthenticated && existingTodo.User == User.Identity.Name;
 
-                    _context.Update(existingTodo);
-                    await _context.SaveChangesAsync();
+                    if (userValidation) {
+                        existingTodo.Title = todoModel.Title;
+                        existingTodo.Done = todoModel.Done;
+                        existingTodo.Description = todoModel.Description;
+                        existingTodo.DateToDone = todoModel.DateToDone;
+
+                        _context.Update(existingTodo);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -154,7 +161,10 @@ namespace ToDoApp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var todoModel = await _context.TodoModel.FindAsync(id);
-            if (todoModel != null)
+            bool userValidation = User.Identity != null && User.Identity.IsAuthenticated && todoModel.User == User.Identity.Name;
+
+
+            if (todoModel != null && userValidation)
             {
                 _context.TodoModel.Remove(todoModel);
             }
