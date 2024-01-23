@@ -1,0 +1,37 @@
+@model IEnumerable<ToDoApp.Models.TodoModel>
+
+<table class="table mb-5">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Date To Done
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateToDone)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><img class="me-3" src="images/pencil-square.svg" /></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><img  class="ms-3" src="images/x-circle.svg" /></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
