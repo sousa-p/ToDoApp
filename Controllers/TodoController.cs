@@ -23,11 +23,13 @@ namespace ToDoApp.Controllers
         // GET: Todo
         [Authorize]
         public async Task<IActionResult> Index()
-        {
-            return View(
-                await _context.TodoModel
+        {   
+            var todos = await _context.TodoModel
                     .Where(t => t.User == User.Identity.Name)
-                    .ToListAsync());
+                    .ToListAsync();
+            var done = todos.Where(todo => todo.Done);
+            var notDone = todos.Where(todo => !todo.Done);
+            return View(new TodoIndexViewModel(notDone, done));
         }
 
         // GET: Todo/Details/5
